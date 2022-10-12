@@ -7,12 +7,12 @@ router.get('/', (req, res) => {
     Post.findAll({
         attributes: [
             'id',
-            'post_text',
+            'text',
             'title',
-            'created_at',
+            'date_created',
           ],
         
-        order: [[ 'created_at', 'DESC']],
+        order: [[ 'date_created', 'DESC']],
         include: [
             {
                 model: User,
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
             },
             {
                 model: Comment,
-                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                attributes: ['id', 'text', 'post_id', 'user_id', 'date_created'],
                 include: {
                     model: User,
                     attributes: ['username']
@@ -50,9 +50,9 @@ router.get('/post/:id', (req, res) => {
       },
       attributes: [
         'id',
-        'post_text',
+        'text',
         'title',
-        'created_at',
+        'date_created',
       ],
       include: [
         {
@@ -61,7 +61,7 @@ router.get('/post/:id', (req, res) => {
         },
         {
             model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'text', 'post_id', 'user_id', 'date_created'],
             include: {
                 model: User,
                 attributes: ['username']

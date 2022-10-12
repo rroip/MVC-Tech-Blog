@@ -1,6 +1,5 @@
 // Dependencies
 const router = require('express').Router();// the router and the database
-const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');// the models
 
 const withAuth = require('../utils/auth')
