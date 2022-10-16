@@ -14,6 +14,28 @@
 
 {{> comments post.comment}}
 
+
+{{#if post.comments}}
+<section class="card">
+  <div class="card-header">
+    <h3>Comments</h3>
+  </div>
+
+  <div class="card-body">
+    {{#each post.comments}}
+    <div>
+      <div>
+        {{text}}
+      </div>
+      <div>
+        &mdash; {{user.username}}, {{format_date date_created}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+
 {{#if loggedIn}}
 <script src="/javascript/comments.js"></script>
 {{/if}}
