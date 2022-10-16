@@ -1,16 +1,13 @@
 // Dependencies
-// Express.js connection
-const router = require('express').Router();
-// Comment model
-const { Comment } = require('../../models');
-// Authorization Helper
-const withAuth = require('../../utils/auth');
+const router = require('express').Router(); // Express.js connection
+const { Comment } = require('../../models'); // Comment model
+const withAuth = require('../../utils/auth'); // Authorization Helper
 
 // Routes
 
 // Get comments
 router.get('/', (req, res) => {
-    // Access the Comment model and run .findAll() method to get all comments
+    
     Comment.findAll()
       // return the data as JSON formatted
       .then(dbCommentData => res.json(dbCommentData))
@@ -23,7 +20,7 @@ router.get('/', (req, res) => {
 
 // Post a new comment
 router.post('/', withAuth, (req, res) => {
-  // check the session, and if it exists, create a comment
+  
   if (req.session) {
     Comment.create({
       comment_text: req.body.comment_text,
